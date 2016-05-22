@@ -164,9 +164,12 @@ Class Orders extends CI_Controller {
 
     public function decline() {
         $json_response = $this->Orders_model->decline_request();
-        $decode_json = json_decode($json_response);
-
         redirect('orders/orders_unpaid_list');
+    }
+
+    public function update_order_status() {
+        $json_response = $this->Orders_model->order_status();
+        redirect('orders/orders_paid_list');
     }
 
 }

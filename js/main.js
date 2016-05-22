@@ -154,19 +154,30 @@ function applyDiscount() {
     } else {
         totalAmount = subTotal;
     }
-   
-    
-     if (tax !== '' && typeof (tax) !== "undefined") {
+
+
+    if (tax !== '' && typeof (tax) !== "undefined") {
         taxAmount = totalAmount * (parseFloat(tax) / 100);
         $('#taxAmount').val(taxAmount.toFixed(2));
         totalAmount = totalAmount + taxAmount;
     }
-    
+
     $('#totalAftertax').val(totalAmount.toFixed(2));
 }
 
-function resetDiscountValue(){
+function resetDiscountValue() {
     $('#totalAftertax').val($('#subTotal').val());
     $('#discountAmount').val('');
-    
+
 }
+
+function setOrderStatus() {
+    var orderstatusoptions = $('#orderstatusoptions').val();
+    if (orderstatusoptions === 'COLLECTION') {
+        $("#orderstatusvaluediv").show();
+    } else {
+        $("#orderstatusvaluediv").hide();
+        $('#orderstatusvalue').val(orderstatusoptions);
+    }
+}
+

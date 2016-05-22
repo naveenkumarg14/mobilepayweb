@@ -1,3 +1,97 @@
+<?php
+foreach ($paid_data->data as $value) {
+    if ($value->purchaseId == $purchaseId) {
+
+        $billNumber = $value->billNumber;
+        $category = $value->category;
+        $isEditable = $value->isEditable;
+        $isDelivered = $value->isDelivered;
+
+        $lastModifiedDateTime = $value->lastModifiedDateTime;
+        $seconds = $lastModifiedDateTime / 1000;
+        $lastModified = date("d/m/Y H:i:s", $seconds);
+
+        $purchaseDateTime = $value->purchaseDate;
+        $seconds = $purchaseDateTime / 1000;
+        $purchaseDate = date("d/m/Y H:i:s", $seconds);
+
+        $isDiscard = $value->isDiscard;
+        $totalAmount = $value->totalAmount;
+
+        $taxAmount = $value->amountDetails->taxAmount;
+        $discount = $value->amountDetails->discount;
+        $discountType = $value->amountDetails->discountType;
+        $discountMiniVal = $value->amountDetails->discountMiniVal;
+
+        $username = $value->users->name;
+        $mobilenumber = $value->users->mobileNumber;
+
+        $deliveryOptionsValue = $value->deliveryOptions;
+        switch ($deliveryOptionsValue) {
+            case "NONE":
+                $deliveryOptions = "Billing";
+                break;
+            Case "HOME":
+                $deliveryOptions = "Home Delivery";
+
+                $addressName = $value->addressDetails->name;
+                $street = $value->addressDetails->street;
+                $address = $value->addressDetails->address;
+                $area = $value->addressDetails->area;
+                $city = $value->addressDetails->city;
+                $postalCode = $value->addressDetails->postalCode;
+                $mobile = $value->addressDetails->mobile;
+                break;
+            Case "LUGGAGE":
+                $deliveryOptions = "Collection";
+                break;
+        }
+    }
+}
+?>
+<!-- Modal default-modal-->
+<div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="default-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" data-border-top="multi">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $purchaseId . " - " . $username; ?></h4>
+            </div>
+            <div class="modal-body">
+                <h4>Order Status</h4>
+                <div class="block-content-outer">
+                    <div class="block-content-inner">
+                        <?php echo form_open('orders/update_order_status'); ?>
+                        <input type="hidden" name="orderid" value="<?php echo $purchaseId; ?>"/>
+                        <br>
+
+                        <select id="orderstatusoptions" name="orderstatusoptions" class="form-control" onchange="setOrderStatus()">
+                            <option>Select</option>
+                            <option value="COLLECTION">COLLECTION</option>
+                            <option value="DELIVERED">DELIVERED</option>
+                            <option value="READY_TO_SHIPPING">READY_TO_SHIPPING</option>
+                            <option value="OUT_FOR_DELIVERY">OUT_FOR_DELIVERY</option>
+                        </select>
+
+                        <br>
+                        <div id="orderstatusvaluediv" style="display:none;">
+                            <input type="text"  class="form-control" name="orderstatusvalue" id="orderstatusvalue" placeholder="Enter the counter number">
+                        </div>
+                        <br>
+                        <label for="input-demo-h-1">Description</label>
+                        <textarea class="form-control" rows="3" name="orderstatusdesc" id="orderstatusdesc"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+            </form>
+        </div> 
+    </div>
+</div>
+
 <!-- START Left Column -->
 <div id="left-column" class=""> <!-- NOTE TO READER: Accepts the following class(es) "menu-icon-only", "fixed" class -->
     <div id="mainnav">
@@ -68,7 +162,7 @@
                 <!-- START Main Buttons -->
                 <div class="page-heading-controls">
                     <a href="pages-invoice.html" role="button" class="btn btn-primary">Print Invoice</a>
-                    <a href="" role="button" class="btn btn-warning">Update Order Status</a>
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#default-modal">Update Order Status</button>
                 </div>
                 <!-- END Main Buttons -->
 
@@ -76,57 +170,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <?php
-                foreach ($paid_data->data as $value) {
-                    if ($value->purchaseId == $purchaseId) {
 
-                        $billNumber = $value->billNumber;
-                        $category = $value->category;
-                        $isEditable = $value->isEditable;
-                        $isDelivered = $value->isDelivered;
-
-                        $lastModifiedDateTime = $value->lastModifiedDateTime;
-                        $seconds = $lastModifiedDateTime / 1000;
-                        $lastModified = date("d/m/Y H:i:s", $seconds);
-
-                        $purchaseDateTime = $value->purchaseDate;
-                        $seconds = $purchaseDateTime / 1000;
-                        $purchaseDate = date("d/m/Y H:i:s", $seconds);
-
-                        $isDiscard = $value->isDiscard;
-                        $totalAmount = $value->totalAmount;
-
-                        $taxAmount = $value->amountDetails->taxAmount;
-                        $discount = $value->amountDetails->discount;
-                        $discountType = $value->amountDetails->discountType;
-                        $discountMiniVal = $value->amountDetails->discountMiniVal;
-
-                        $username = $value->users->name;
-                        $mobilenumber = $value->users->mobileNumber;
-
-                        $deliveryOptionsValue = $value->deliveryOptions;
-                        switch ($deliveryOptionsValue) {
-                            case "NONE":
-                                $deliveryOptions = "Billing";
-                                break;
-                            Case "HOME":
-                                $deliveryOptions = "Home Delivery";
-
-                                $addressName = $value->addressDetails->name;
-                                $street = $value->addressDetails->street;
-                                $address = $value->addressDetails->address;
-                                $area = $value->addressDetails->area;
-                                $city = $value->addressDetails->city;
-                                $postalCode = $value->addressDetails->postalCode;
-                                $mobile = $value->addressDetails->mobile;
-                                break;
-                            Case "LUGGAGE":
-                                $deliveryOptions = "Collection";
-                                break;
-                        }
-                    }
-                }
-                ?>
                 <!-- START Block: Order View -->
                 <div class="block">
                     <div class="block-heading">
