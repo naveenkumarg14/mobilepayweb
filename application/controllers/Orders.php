@@ -162,4 +162,11 @@ Class Orders extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function decline() {
+        $json_response = $this->Orders_model->decline_request();
+        $decode_json = json_decode($json_response);
+
+        redirect('orders/orders_unpaid_list');
+    }
+
 }

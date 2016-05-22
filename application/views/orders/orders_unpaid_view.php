@@ -1,3 +1,73 @@
+<?php
+foreach ($unpaid_data->data as $value) {
+    if ($value->purchaseId == $purchaseId) {
+
+        $billNumber = $value->billNumber;
+        $category = $value->category;
+        $isEditable = $value->isEditable;
+        $isDelivered = $value->isDelivered;
+        if ($isDelivered == true)
+            $deliveryOptions = "Yes";
+        else
+            $deliveryOptions = "No";
+
+        $lastModifiedDateTime = $value->lastModifiedDateTime;
+        $seconds = $lastModifiedDateTime / 1000;
+        $lastModified = date("d/m/Y H:i:s", $seconds);
+
+        $purchaseDateTime = $value->purchaseDate;
+        $seconds = $purchaseDateTime / 1000;
+        $purchaseDate = date("d/m/Y H:i:s", $seconds);
+
+
+        $isDiscard = $value->isDiscard;
+        $totalAmount = $value->totalAmount;
+
+        $taxAmount = $value->amountDetails->taxAmount;
+        $discount = $value->amountDetails->discount;
+        $discountType = $value->amountDetails->discountType;
+        $discountMiniVal = $value->amountDetails->discountMiniVal;
+
+        $username = $value->users->name;
+        $mobilenumber = $value->users->mobileNumber;
+    }
+}
+?>
+<!-- Modal default-modal-->
+<div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="default-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" data-border-top="multi">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $purchaseId . " - " . $username; ?></h4>
+            </div>
+            <div class="modal-body">
+                <h4>Reason to Decline</h4>
+                <div class="block-content-outer">
+                    <div class="block-content-inner">
+                        <?php echo form_open('orders/decline'); ?>
+                        <input type="hidden" name="orderid" value="<?php echo $purchaseId; ?>"/>
+                        <div class="radio">
+                            <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="Wrong Product List">Wrong Product List</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="Wrong User Details">Wrong User Details</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="Stock Unavailable">Stock Unavailable</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+            </form>
+        </div> 
+    </div>
+</div>
+
 <!-- START Left Column -->
 <div id="left-column" class=""> <!-- NOTE TO READER: Accepts the following class(es) "menu-icon-only", "fixed" class -->
     <div id="mainnav">
@@ -52,6 +122,9 @@
 </div>
 <!-- END Left Column -->
 
+
+
+
 <div id="right-column">
     <div class="right-column-content">
         <div class="row">
@@ -68,6 +141,7 @@
                 <!-- START Main Buttons -->
                 <div class="page-heading-controls">
                     <a href="pages-invoice.html" role="button" class="btn btn-primary">Print Invoice</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#default-modal">Order Cancel</button>
                 </div>
                 <!-- END Main Buttons -->
 
@@ -75,41 +149,6 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <?php
-                foreach ($unpaid_data->data as $value) {
-                    if ($value->purchaseId == $purchaseId) {
-
-                        $billNumber = $value->billNumber;
-                        $category = $value->category;
-                        $isEditable = $value->isEditable;
-                        $isDelivered = $value->isDelivered;
-                        if ($isDelivered == true)
-                            $deliveryOptions = "Yes";
-                        else
-                            $deliveryOptions = "No";
-
-                        $lastModifiedDateTime = $value->lastModifiedDateTime;
-                        $seconds = $lastModifiedDateTime / 1000;
-                        $lastModified = date("d/m/Y H:i:s", $seconds);
-
-                        $purchaseDateTime = $value->purchaseDate;
-                        $seconds = $purchaseDateTime / 1000;
-                        $purchaseDate = date("d/m/Y H:i:s", $seconds);
-
-
-                        $isDiscard = $value->isDiscard;
-                        $totalAmount = $value->totalAmount;
-
-                        $taxAmount = $value->amountDetails->taxAmount;
-                        $discount = $value->amountDetails->discount;
-                        $discountType = $value->amountDetails->discountType;
-                        $discountMiniVal = $value->amountDetails->discountMiniVal;
-
-                        $username = $value->users->name;
-                        $mobilenumber = $value->users->mobileNumber;
-                    }
-                }
-                ?>
                 <!-- START Block: Order View -->
                 <div class="block">
                     <div class="block-heading">

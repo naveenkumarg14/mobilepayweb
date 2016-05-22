@@ -78,11 +78,11 @@ class Orders_model extends CI_Model {
         $product_rate = $this->input->post('product_rate');
         $product_qty = $this->input->post('product_qty');
         $total_price = $this->input->post('total_price');
-        
-       $tax = $this->input->post('tax');
-       $discounttype = $this->input->post('discounttype');
-       $discountAmount = $this->input->post('discountAmount');
-       $discountMinAmount= $this->input->post('discountMinAmount');
+
+        $tax = $this->input->post('tax');
+        $discounttype = $this->input->post('discounttype');
+        $discountAmount = $this->input->post('discountAmount');
+        $discountMinAmount = $this->input->post('discountMinAmount');
 
         $purchaseDetails = array();
         $count = count($product_id);
@@ -99,8 +99,8 @@ class Orders_model extends CI_Model {
 
         $amountDetails = array("taxAmount" => $tax, "discount" => $discountAmount, "discountType" => $discounttype, "discountMiniVal" => $discountMinAmount);
 
-        $time = time()*1000;//1463838753000
-        $purchaseDateTime = 'MOB'+time();
+        $time = time() * 1000; //1463838753000
+        $purchaseDateTime = 'MOB' + time();
         $jsonData = array(
             'accessToken' => $this->session->merchantToken,
             'serverToken' => $this->session->serverToken,
@@ -121,6 +121,34 @@ class Orders_model extends CI_Model {
         $url = 'http://123.238.109.39:8082/mobilepay/merchant/createPurchase.html';
         //Initiate cURL.
         $ch = curl_init($url);
+        //Encode the array into JSON.
+        $jsonDataEncoded = json_encode($jsonData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        //Tell cURL that we want to send a POST request.
+        curl_setopt($ch, CURLOPT_POST, true);
+        //Attach our encoded JSON string to the POST fields.
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+        //Set the content type to application/json
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        //Execute the request
+        $result = curl_exec($ch);
+        return $result;
+    }
+
+    public function decline_request() {
+        //API Url
+        $url = 'http://123.238.109.39:8082/mobilepay/merchant/discardPurchase.html';
+        //Initiate cURL.
+        $ch = curl_init($url);
+        //The JSON data.
+        $time = time() * 1000;
+        $jsonData = array(
+            'accessToken' => $this->session->merchantToken,
+            'serverToken' => $this->session->serverToken,
+            'createdDateTime' => $time,
+            'purchaseGuid' => $this->input->post('orderid'),
+            'reason' => $this->input->post('optionsRadios')
+        );
         //Encode the array into JSON.
         $jsonDataEncoded = json_encode($jsonData);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

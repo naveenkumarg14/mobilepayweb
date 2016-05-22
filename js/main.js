@@ -40,7 +40,7 @@ $(document).on('focus', '.autocomplete_txt', function () {
         minLength: 0,
         source: function (request, response) {
             $.ajax({
-                url: 'http://localhost/sales/orders/ajax',
+                url: 'http://localhost/mobilepay/orders/ajax',
                 dataType: "json",
                 data: {
                     name_startsWith: request.term,
