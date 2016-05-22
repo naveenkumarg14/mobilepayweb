@@ -12,7 +12,7 @@ class Orders_model extends CI_Model {
         // $this->load->helper('url');
         //API Url
         ///merchant/getUnPayedPurchaseList
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/getUnPayedPurchaseList.html';
+         $url = WEBSERVICEURL.'getUnPayedPurchaseList.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -40,7 +40,7 @@ class Orders_model extends CI_Model {
     public function paid_request() {
         //   $this->load->helper('url');
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/getPayedPurchaseList.html';
+         $url = WEBSERVICEURL.'getPayedPurchaseList.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -118,7 +118,7 @@ class Orders_model extends CI_Model {
         );
 
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/createPurchase.html';
+        $url = WEBSERVICEURL.'createPurchase.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //Encode the array into JSON.
@@ -137,7 +137,7 @@ class Orders_model extends CI_Model {
 
     public function decline_request() {
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/discardPurchase.html';
+         $url = WEBSERVICEURL.'discardPurchase.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -165,7 +165,7 @@ class Orders_model extends CI_Model {
 
     public function order_status() {
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/updateOrderStatus.html';
+        $url = WEBSERVICEURL.'updateOrderStatus.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.

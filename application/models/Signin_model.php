@@ -6,7 +6,7 @@ class Signin_model extends CI_Model {
         $this->load->helper('url');
 
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/login.html';
+        $url = WEBSERVICEURL . 'login.html';
         // Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.

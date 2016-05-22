@@ -6,7 +6,7 @@ class Signup_model extends CI_Model {
         $this->load->helper('url');
 
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/signup.html';
+        $url = WEBSERVICEURL . 'signup.html';
         //Initiate cURL.
         $ch = curl_init($url);
 

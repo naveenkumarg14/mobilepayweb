@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$config['base_url'] = 'http://localhost:8080/sales/';
 $config['base_url'] = 'http://localhost/mobilepay/';
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File

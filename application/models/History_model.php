@@ -11,7 +11,7 @@ class History_model extends CI_Model {
     public function paid_request() {
         //   $this->load->helper('url');
         //API Url
-        $url = 'http://123.238.109.39:8082/mobilepay/merchant/getHistoryList.html';
+        $url = WEBSERVICEURL . 'getHistoryList.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
