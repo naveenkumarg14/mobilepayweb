@@ -73,7 +73,7 @@ foreach ($unpaid_data->data as $value) {
     <div id="mainnav">
         <ul class="mainnav"> <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
             <li id="home" class="menu-item-top">
-                <a href="../home" class="top">
+                <a href="<?php echo base_url(); ?>home" class="top">
                     <span class="main-menu-icon">
                         <span aria-hidden="true" class="icon icon-grid-big"></span>
                     </span>
@@ -88,9 +88,9 @@ foreach ($unpaid_data->data as $value) {
                     <span class="main-menu-text">Order Management</span>
                 </a>
                 <ul>
-                    <li><a href="../orders/order_add">Add Order</a></li>
-                    <li><a href="../orders/orders_paid_list">Paid List</a></li>
-                    <li><a href="../orders/orders_unpaid_list">Unpaid List</a></li>
+                    <li><a href="<?php echo base_url(); ?>orders/order_add">Add Order</a></li>
+                    <li><a href="<?php echo base_url(); ?>orders/orders_paid_list">Paid List</a></li>
+                    <li><a href="<?php echo base_url(); ?>orders/orders_unpaid_list">Unpaid List</a></li>
                 </ul>
             </li>
             <li class="menu-item-top">
@@ -101,8 +101,8 @@ foreach ($unpaid_data->data as $value) {
                     <span class="main-menu-text">Product Management</span>
                 </a>
                 <ul>
-                    <li><a href="../products/products_add">Product Add</a></li>
-                    <li><a href="../products/products_list">Product List</a></li>
+                    <li><a href="<?php echo base_url(); ?>products/products_add">Product Add</a></li>
+                    <li><a href="<?php echo base_url(); ?>products/products_list">Product List</a></li>
                 </ul>
             </li>
             <li class="menu-item-top">
@@ -113,7 +113,7 @@ foreach ($unpaid_data->data as $value) {
                     <span class="main-menu-text">History</span>
                 </a>
                 <ul>
-                    <li></li>
+                    <li><a href="<?php echo base_url(); ?>history/history_paid_list">Paid List</a></li>
                 </ul>
             </li>
 
@@ -121,9 +121,6 @@ foreach ($unpaid_data->data as $value) {
     </div>
 </div>
 <!-- END Left Column -->
-
-
-
 
 <div id="right-column">
     <div class="right-column-content">
