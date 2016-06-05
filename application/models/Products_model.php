@@ -3,6 +3,7 @@
 class Products_model extends CI_Model {
 
     public function __construct() {
+        $this->load->helper('url');
         $this->load->database();
     }
 
@@ -10,7 +11,8 @@ class Products_model extends CI_Model {
         foreach ($excel_val as $value) {
             $data = array(
                 'ProductName' => $value['B'],
-                'Rate' => $value['C']
+                'Rate' => $value['C'],
+                'MobileNumber' => $this->session->userdata('mobileNumber')
             );
             $this->db->insert('ProductDetails', $data);
         }

@@ -89,7 +89,7 @@
                                                 <th class="col-xs-2">ID</th>
                                                 <th class="col-xs-1">Product Name</th>
                                                 <th class="text-right col-xs-2">Price</th>
-                                                <th class="text-right col-xs-2">Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -98,9 +98,6 @@
                                                     <td><?php echo $item['ProductId']; ?></td>
                                                     <td><?php echo $item['ProductName']; ?></td>
                                                     <td class="text-right"><?php echo $item['Rate']; ?></td>
-                                                    <td class="text-right">
-                                                        <a role="button" class="btn btn-primary" href="<?php echo site_url('products/product_edit/' . $item['ProductId']); ?>">Edit</a>
-                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

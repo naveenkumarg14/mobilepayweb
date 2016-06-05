@@ -6,16 +6,22 @@ class Pages extends CI_Controller {
 
         $this->load->helper('url');
         $this->load->library('session');
-        if (!file_exists(APPPATH . 'views/pages/' . $page . '.php')) {
-            // Whoops, we don't have a page for that!
-            show_404();
+
+
+        if (!empty($_SESSION['merchantToken']) && $_SESSION['serverToken']) {
+            if (!file_exists(APPPATH . 'views/pages/' . $page . '.php')) {
+                // Whoops, we don't have a page for that!
+                show_404();
+            }
+
+            $data['title'] = ucfirst($page); // Capitalize the first letter
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('pages/' . $page, $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            redirect('signin');
         }
-
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/' . $page, $data);
-        $this->load->view('templates/footer', $data);
     }
 
 }

@@ -63,16 +63,7 @@
                 </h1>
             </div>
             <div class="col-md-6">
-                <div class="page-heading-controls">
-                    <a class="btn btn-primary" role="button" href="javascript:window.print();">
-                        Print
-                        <span class="glyphicon glyphicon-print"></span>
-                    </a>
-                    <a class="btn btn-success" role="button" href="#">Pay Now</a>
-
-
-
-                </div>
+               
             </div>
         </div>
         <div class="row">

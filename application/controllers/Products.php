@@ -65,13 +65,13 @@ Class Products extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function product_edit($id) {
-
-        $data['item_details'] = $this->Products_model->get_product_by_id($id);
-
-        $this->load->view('templates/header');
-        $this->load->view('products/product_edit', $data);
-        $this->load->view('templates/footer');
-    }
+//    public function product_edit($id) {
+//
+//        $data['item_details'] = $this->Products_model->get_product_by_id($id);
+//
+//        $this->load->view('templates/header');
+//        $this->load->view('products/product_edit', $data);
+//        $this->load->view('templates/footer');
+//    }
 
 }

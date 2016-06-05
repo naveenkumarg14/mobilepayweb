@@ -12,7 +12,7 @@ class Orders_model extends CI_Model {
         // $this->load->helper('url');
         //API Url
         ///merchant/getUnPayedPurchaseList
-         $url = WEBSERVICEURL.'getUnPayedPurchaseList.html';
+        $url = WEBSERVICEURL . 'getUnPayedPurchaseList.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -40,7 +40,7 @@ class Orders_model extends CI_Model {
     public function paid_request() {
         //   $this->load->helper('url');
         //API Url
-         $url = WEBSERVICEURL.'getPayedPurchaseList.html';
+        $url = WEBSERVICEURL . 'getPayedPurchaseList.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -67,6 +67,7 @@ class Orders_model extends CI_Model {
 
     public function GetRows($keyword) {
         $this->db->like("ProductName", $keyword);
+        $this->db->where("MobileNumber=" . $this->session->userdata('mobileNumber'));
         $res = $this->db->get('productdetails')->result_array();
         return $res;
     }
@@ -118,7 +119,7 @@ class Orders_model extends CI_Model {
         );
 
         //API Url
-        $url = WEBSERVICEURL.'createPurchase.html';
+        $url = WEBSERVICEURL . 'createPurchase.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //Encode the array into JSON.
@@ -137,7 +138,7 @@ class Orders_model extends CI_Model {
 
     public function decline_request() {
         //API Url
-         $url = WEBSERVICEURL.'discardPurchase.html';
+        $url = WEBSERVICEURL . 'discardPurchase.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -165,7 +166,7 @@ class Orders_model extends CI_Model {
 
     public function order_status() {
         //API Url
-        $url = WEBSERVICEURL.'updateOrderStatus.html';
+        $url = WEBSERVICEURL . 'updateOrderStatus.html';
         //Initiate cURL.
         $ch = curl_init($url);
         //The JSON data.
@@ -175,7 +176,7 @@ class Orders_model extends CI_Model {
             'serverToken' => $this->session->serverToken,
             'createdDateTime' => $time,
             'purchaseUUID' => $this->input->post('orderid'),
-           // 'orderstatusoptions' => $this->input->post('orderstatusoptions'),
+            // 'orderstatusoptions' => $this->input->post('orderstatusoptions'),
             'orderStatus' => $this->input->post('orderstatusvalue'),
             'orderStatusDesc' => $this->input->post('orderstatusdesc')
         );
