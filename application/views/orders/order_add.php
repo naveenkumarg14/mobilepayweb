@@ -107,6 +107,18 @@
                                                 </select>													
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="product-sku" class="col-md-4 control-label">
+                                                Editable
+                                            </label>
+                                            <div class="col-md-8">
+                                                <select id="editable" name="editable" class="form-control">
+                                                    <option value="true">Yes</option>
+                                                    <option value="false">No</option>
+                                                </select>													
+                                            </div>
+                                        </div>
                                     </div>
 
 

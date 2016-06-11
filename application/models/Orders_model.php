@@ -116,6 +116,7 @@ class Orders_model extends CI_Model {
             'totalAmount' => $this->input->post('subTotal'),
             'purchaseDetails' => $purchaseDetails,
             'amountDetails' => $amountDetails,
+            'isEditable' => $this->input->post('editable'),
         );
 
         //API Url

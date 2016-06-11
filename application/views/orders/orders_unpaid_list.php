@@ -55,20 +55,13 @@
 <div id="right-column">
     <div class="right-column-content">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h1>
                     <span aria-hidden="true" class="icon icon-dollar"></span>
                     <span class="main-text">Order Unpaid List</span>
                 </h1>
             </div>
-            <div class="col-md-6">
-                <!-- START Main Buttons -->
-                <div class="page-heading-controls">
-                    <a href="pages-invoice.html" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span>Print Invoice</a>
-                    <a href="#" role="button" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-            <!-- END Main Buttons -->
+           
         </div>
 
         <div class="row">
@@ -83,7 +76,7 @@
                                     <table class="table table-condensed table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th class="col-xs-3">Order ID</th>
+                                                <th class="col-xs-2">Order ID</th>
                                                 <th class="col-xs-2">Customer</th>
                                                 <th class="col-xs-1">Status</th>
                                                 <th class="col-xs-2">Total</th>
@@ -95,12 +88,12 @@
                                         <tbody>
                                             <?php
                                             foreach ($unpaid_data->data as $value) {
-                                                $view_url = site_url('orders/orders_unpaid_view/' . $value->purchaseId);
+                                                $view_url = site_url('orders/orders_unpaid_view/' . $value->billNumber);
 
                                                 echo "<tr>";
-                                                echo "<td>" . $value->purchaseId . "</td>";
+                                                echo "<td>" . $value->billNumber . "</td>";
                                                 echo "<td>" . $value->users->name . "</td>";
-                                                echo "<td>" . '<span class="label label-warning">Pending</span>' . "</td>";
+                                                echo "<td>" . '<span class="label label-success">'.$value->orderStatus.'</span>' . "</td>";
                                                 echo "<td>" . $value->totalAmount . "</td>";
 
                                                 $lastModifiedDateTime = $value->lastModifiedDateTime;
@@ -120,16 +113,7 @@
                                         </tbody>
                                     </table>
 
-                                    <div class="help-text">Showing 1 - 20 of 98</div>
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#">&laquo;</a></li>
-                                        <li class="active"><a href="#"><span>1 <span class="sr-only">(current)</span></span></a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>
+                                   
                                 </form>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 foreach ($unpaid_data->data as $value) {
-    if ($value->purchaseId == $purchaseId) {
+    if ($value->billNumber == $billNumber) {
 
         $billNumber = $value->billNumber;
         $category = $value->category;
@@ -39,7 +39,7 @@ foreach ($unpaid_data->data as $value) {
         <div class="modal-content" data-border-top="multi">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $purchaseId . " - " . $username; ?></h4>
+                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $billNumber . " - " . $username; ?></h4>
             </div>
             <div class="modal-body">
                 <h4>Reason to Decline</h4>
@@ -150,7 +150,7 @@ foreach ($unpaid_data->data as $value) {
                 <div class="block">
                     <div class="block-heading">
                         <div class="main-text h2">
-                            <?php echo "Order #" . $purchaseId . " - " . $username; ?>
+                            <?php echo "Order #" . $billNumber . " - " . $username; ?>
                         </div>
                     </div>
                     <div class="block-content-outer">
@@ -167,7 +167,7 @@ foreach ($unpaid_data->data as $value) {
                                             <tbody>
                                                 <tr>
                                                     <td class="col-md-3">Order ID:</td>
-                                                    <td class="col-md-9">#<?php echo $purchaseId; ?></td>
+                                                    <td class="col-md-9">#<?php echo $billNumber; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-3">Invoice #:</td>
@@ -231,7 +231,7 @@ foreach ($unpaid_data->data as $value) {
                                             <tbody>
                                                 <?php
                                                 foreach ($unpaid_data->data as $value) {
-                                                    if ($value->purchaseId == $purchaseId) {
+                                                    if ($value->billNumber == $billNumber) {
                                                         foreach ($value->productDetails as $item) {
                                                             echo "<tr>";
                                                             echo "<td>" . $item->itemNo . "</td>";
