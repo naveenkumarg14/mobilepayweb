@@ -68,6 +68,8 @@ data: {name_startsWith: request.term},
             $('#productname_' + elementId).val(ui.item.data.ProductName);
             $('#product_id_' + elementId).val(ui.item.data.ProductId);
             $('#product_rate_' + elementId).val(ui.item.data.Rate);
+             $('#product_qty_' + elementId).val(1);
+             $('#total_price_' + elementId).val(ui.item.data.Rate);
         }
     });
 });
