@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://52.39.115.143/mobilepay/';
-//$config['base_url'] = 'http://localhost/mobilepay/';
+//$config['base_url'] = 'http://52.39.115.143/mobilepay/';
+$config['base_url'] = 'http://localhost/mobilepay/';
 
 
 /*

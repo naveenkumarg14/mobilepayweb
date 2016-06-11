@@ -85,4 +85,4 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define('WEBSERVICEURL', 'http://123.238.109.39:8082/mobilepay/merchant/'); 
+define('WEBSERVICEURL', 'http://123.176.34.211:8082/mobilepay/merchant/'); 

@@ -66,8 +66,8 @@ class Orders_model extends CI_Model {
     }
 
     public function GetRows($keyword) {
-        $this->db->like("ProductName", $keyword);
         $this->db->where("MobileNumber=" . $this->session->userdata('mobileNumber'));
+        $this->db->like("ProductName", $keyword);
         $res = $this->db->get('productdetails')->result_array();
         return $res;
     }

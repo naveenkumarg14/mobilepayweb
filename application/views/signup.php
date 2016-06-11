@@ -2,7 +2,7 @@
     <div class="standalone-page registration-page">
         <div class="standalone-page-logo">
             <a href="index.html">
-                <img src="<?php echo base_url(); ?>images/logo-default.png" width="156" height="44" alt="Logo" />
+               <h2 style="color:#fff;">MobilePay</h2>
             </a>
         </div>
         <div class="standalone-page-content" data-border-top="multi">
@@ -10,7 +10,6 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="heading">
-                            <span aria-hidden="true" class="icon icon-key"></span>
                             <span class="main-text">Create a new account.</span>
                         </h2>
                     </div>
@@ -24,7 +23,7 @@
 
                         <?php echo form_open_multipart('signup'); ?>
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Shop Name</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Shop Name <span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputShopname" placeholder="Shop Name" type="text" name="merchantName" required>
                                 <span class="help-block text-muted"></span>
@@ -32,7 +31,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Shop Address</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Shop Address <span>*</span></label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="inputShopAddress" name="merchantAddress" required></textarea>
                                 <span class="help-block text-muted"> </span>
@@ -40,7 +39,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Shop Area</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Shop Area <span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputShopArea" placeholder="Shop Area" type="text" name="area" required>
                                 <span class="help-block text-muted"></span>
@@ -48,7 +47,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Postal Code</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Postal Code <span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputPostalCode" placeholder="Postal Code" type="text" name="pinCode" required>
                                 <span class="help-block text-muted"></span>
@@ -56,7 +55,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Mobile Number</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Mobile Number<span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputmobileNumber" placeholder="Mobile Number" type="number" name="mobileNumber" required>
                                 <span class="help-block text-muted"></span>
@@ -64,7 +63,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Landline Number</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">Landline Number <span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputLandlineNumber" placeholder="Landline Number" type="number" name="landLineNumber" required>
                                 <span class="help-block text-muted"></span>
@@ -72,7 +71,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-3 control-label">Password  <span>*</span></label>
                             <div class="col-sm-9">
                                 <input autocomplete="off" class="form-control" id="inputPassword" placeholder="Password" type="password" name="password" required>
                                 <span class="help-block text-muted"></span>
@@ -80,7 +79,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-3 control-label">Shop Type</label>
+                            <label for="inputPassword" class="col-sm-3 control-label">Shop Type <span>*</span></label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="category">
                                     <option value="0">Select One</option>
@@ -91,13 +90,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Shop Logo</label>
-                            <div class="col-sm-9">
-                                <input autocomplete="off" class="form-control" id="inputLogo" placeholder="Logo" type="file" name="file">
-                                <span class="help-block text-muted"></span>
-                            </div>
-                        </div>
+                        <!--                        <div class="form-group">
+                                                    <label for="inputUsername" class="col-sm-3 control-label">Shop Logo</label>
+                                                    <div class="col-sm-9">
+                                                        <input autocomplete="off" class="form-control" id="inputLogo" placeholder="Logo" type="file" name="file">
+                                                        <span class="help-block text-muted"></span>
+                                                    </div>
+                                                </div>-->
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">

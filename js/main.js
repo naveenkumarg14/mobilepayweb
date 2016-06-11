@@ -41,11 +41,10 @@ $(document).on('focus', '.autocomplete_txt', function () {
         source: function (request, response) {
             $.ajax({
                 url: './ajax',
-                dataType: "json",
-                data: {
-                    name_startsWith: request.term,
-                    type: 'country'
-                },
+               type: "post",
+               dataType: 'json',
+data: {name_startsWith: request.term},
+                
                 success: function (data) {
                     response($.map(data, function (item) {
                         if (data.length >= 0)

@@ -128,7 +128,8 @@ Class Orders extends CI_Controller {
     }
 
     public function ajax() {
-        $keyword = $this->input->post('type');
+       
+       $keyword =$this->input->post('name_startsWith');
         $data = $this->Orders_model->GetRows($keyword);
         echo json_encode($data);
     }

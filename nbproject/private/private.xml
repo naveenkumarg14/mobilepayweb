@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/mobilepay/application/config/constants.php</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/application/config/config.php</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/js/main.js</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/application/views/orders/order_add.php</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/application/config/database.php</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/js/ajax.js</file>
+            <file>file:/C:/xampp/htdocs/mobilepay/application/models/Orders_model.php</file>
+        </group>
     </open-files>
 </project-private>
