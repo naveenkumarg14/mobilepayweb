@@ -42,10 +42,9 @@ $(document).on('focus', '.autocomplete_txt', function () {
         source: function (request, response) {
             $.ajax({
                 url: './ajax',
-               type: "post",
-               dataType: 'json',
-data: {name_startsWith: request.term},
-                
+                type: "post",
+                dataType: 'json',
+                data: {name_startsWith: request.term},
                 success: function (data) {
                     response($.map(data, function (item) {
                         if (data.length >= 0)
@@ -69,9 +68,9 @@ data: {name_startsWith: request.term},
             $('#productname_' + elementId).val(ui.item.data.ProductName);
             $('#product_id_' + elementId).val(ui.item.data.ProductId);
             $('#product_rate_' + elementId).val(ui.item.data.Rate);
-             $('#product_qty_' + elementId).val(1);
-             $('#total_price_' + elementId).val(ui.item.data.Rate);
-             calculateTotal();
+            $('#product_qty_' + elementId).val(1);
+            $('#total_price_' + elementId).val(ui.item.data.Rate);
+            calculateTotal();
         }
     });
 });
@@ -105,35 +104,54 @@ function calculateTotal() {
             subTotal += parseFloat($(this).val());
     });
     $('#subTotal').val(subTotal.toFixed(2));
+    total = subTotal;
+
+    var discountType = $('#discounttype').val();
+    var discountAmount = $('#discountAmount').val();
+    var discountMinAmount = $('#discountMinAmount').val();
+
+    if (discountType && discountAmount) {
+        if (discountType === 'PERCENTAGE') {
+            if (discountMinAmount) {
+                if (discountMinAmount <= subTotal) {
+                    var discountAmountTemp = subTotal * (parseFloat(discountAmount) / 100);
+                    total = subTotal - discountAmountTemp.toFixed(2);
+                }
+            } else {
+                var discountAmountTemp = subTotal * (parseFloat(discountAmount) / 100);
+                total = subTotal - discountAmountTemp.toFixed(2);
+            }
+        } else if (discountType === 'AMOUNT') {
+           
+            if (discountMinAmount) {
+                if (discountMinAmount <= subTotal && discountAmount <= subTotal) {
+                   total = subTotal - discountAmount;
+                }
+            } else {
+               
+                if (discountAmount <= subTotal) {
+                   
+                    total = subTotal - discountAmount;
+                   
+                }
+            }
+
+
+        }
+    }
+
     tax = $('#tax').val();
     if (tax !== '' && typeof (tax) !== "undefined") {
-        taxAmount = subTotal * (parseFloat(tax) / 100);
+        taxAmount = total * (parseFloat(tax) / 100);
         $('#taxAmount').val(taxAmount.toFixed(2));
-        total = subTotal + taxAmount;
-    } else {
-        $('#taxAmount').val(0);
-        total = subTotal;
+        total = total + taxAmount;
     }
+
+
     $('#totalAftertax').val(total.toFixed(2));
     //calculateAmountDue();
 }
 
-//$(document).on('change keyup blur', '#amountPaid', function() {
-//    calculateAmountDue();
-//});
-
-////due amount calculation
-//function calculateAmountDue() {
-//    amountPaid = $('#amountPaid').val();
-//    total = $('#totalAftertax').val();
-//    if (amountPaid != '' && typeof(amountPaid) != "undefined") {
-//        amountDue = parseFloat(total) - parseFloat(amountPaid);
-//        $('.amountDue').val(amountDue.toFixed(2));
-//    } else {
-//        total = parseFloat(total).toFixed(2);
-//        $('.amountDue').val(total);
-//    }
-//}
 
 
 //It restrict the non-numbers
@@ -145,7 +163,7 @@ function IsNumeric(e) {
     var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
     return ret;
 }
-
+/*
 function applyDiscount() {
     var subTotal = $('#subTotal').val();
     var discountType = $('#discounttype').val();
@@ -168,11 +186,12 @@ function applyDiscount() {
     }
 
     $('#totalAftertax').val(totalAmount.toFixed(2));
-}
+}*/
 
 function resetDiscountValue() {
-    $('#totalAftertax').val($('#subTotal').val());
-    $('#discountAmount').val('');
+        $('#discountAmount').val('');
+    $('#discountMinAmount').val('');
+    calculateTotal();
 
 }
 

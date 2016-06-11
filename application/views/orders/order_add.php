@@ -168,14 +168,14 @@
                                             <div class="form-group">
                                                 <label>Discount Amount: &nbsp;</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="discountAmount" name="discountAmount" placeholder="Dicount Amount" onkeyup="applyDiscount()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+                                                    <input type="number" class="form-control" id="discountAmount" name="discountAmount" min="0" placeholder="Dicount Amount" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
                                                     <div class="input-group-addon">%</div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Minimum Amount: &nbsp;</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="discountMinAmount" name="discountMinAmount" placeholder="Minimum Amount" onkeyup="applyDiscount()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+                                                    <input type="number" class="form-control" id="discountMinAmount" name="discountMinAmount" min="0" placeholder="Minimum Amount" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
                                                     <div class="input-group-addon">%</div>
                                                 </div>
                                             </div>
