@@ -113,7 +113,7 @@ class Orders_model extends CI_Model {
             'customername' => $this->input->post('customername'),
             'userMobile' => $this->input->post('mobilenumber'),
             'isHomeDeliver' => $this->input->post('homedelivery'),
-            'totalAmount' => $this->input->post('subTotal'),
+            'totalAmount' => $this->input->post('total'),
             'purchaseDetails' => $purchaseDetails,
             'amountDetails' => $amountDetails,
             'isEditable' => $this->input->post('editable'),

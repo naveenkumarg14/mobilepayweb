@@ -94,11 +94,11 @@ Class Orders extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function orders_paid_view($purchaseId) {
+    public function orders_paid_view($billNumber) {
 
         $json_response = $this->Orders_model->paid_request();
         $decode_json = json_decode($json_response);
-        $data['purchaseId'] = $purchaseId;
+        $data['billNumber'] = $billNumber;
         $status_code = $decode_json->statusCode;
 
         switch ($status_code) {

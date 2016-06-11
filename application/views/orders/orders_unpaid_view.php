@@ -46,7 +46,7 @@ foreach ($unpaid_data->data as $value) {
                 <div class="block-content-outer">
                     <div class="block-content-inner">
                         <?php echo form_open('orders/decline'); ?>
-                        <input type="hidden" name="orderid" value="<?php echo $purchaseId; ?>"/>
+                        <input type="hidden" name="orderid" value="<?php echo $billNumber; ?>"/>
                         <div class="radio">
                             <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="Wrong Product List">Wrong Product List</label>
                         </div>

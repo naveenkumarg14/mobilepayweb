@@ -172,7 +172,7 @@
                                             <div class="form-group">
                                                 <label>Discount Type: &nbsp;</label>
                                                 <select name="discounttype" id="discounttype" class="form-control" onchange="resetDiscountValue()">
-                                                    <option value="None">None</option>
+                                                    <option value="NONE">None</option>
                                                     <option value="PERCENTAGE">Percentage</option>
                                                     <option value="AMOUNT">Amount</option>
                                                 </select>
@@ -195,7 +195,7 @@
                                                 <label>Total: &nbsp;</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">$</div>
-                                                    <input type="number" class="form-control" id="totalAftertax" placeholder="Total" onkeypress="return IsNumeric(event);" onkeyup="applyDiscount()" ondrop="return false;" onpaste="return false;" readonly>
+                                                    <input type="number" class="form-control" name="total" id="totalAftertax" placeholder="Total" onkeypress="return IsNumeric(event);" onkeyup="applyDiscount()" ondrop="return false;" onpaste="return false;" readonly>
                                                 </div>
                                             </div>
                                         </div>

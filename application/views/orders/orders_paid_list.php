@@ -95,12 +95,12 @@
                                         <tbody>
                                             <?php
                                             foreach ($paid_data->data as $value) {
-                                                $view_url = site_url('orders/orders_paid_view/' . $value->purchaseId);
+                                                $view_url = site_url('orders/orders_paid_view/' . $value->billNumber);
 
                                                 echo "<tr>";
-                                                echo "<td>" . $value->purchaseId . "</td>";
+                                                echo "<td>" . $value->billNumber . "</td>";
                                                 echo "<td>" . $value->users->name . "</td>";
-                                                echo "<td>" . '<span class="label label-success">completed</span>' . "</td>";
+                                                echo "<td>" . '<span class="label label-success">' . $value->orderStatus . '</span>' . "</td>";
                                                 echo "<td>" . $value->totalAmount . "</td>";
 
                                                 $purchaseDateTime = $value->purchaseDate;

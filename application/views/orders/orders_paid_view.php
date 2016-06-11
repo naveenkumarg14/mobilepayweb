@@ -1,6 +1,6 @@
 <?php
 foreach ($paid_data->data as $value) {
-    if ($value->purchaseId == $purchaseId) {
+    if ($value->billNumber == $billNumber) {
 
         $billNumber = $value->billNumber;
         $category = $value->category;
@@ -55,14 +55,14 @@ foreach ($paid_data->data as $value) {
         <div class="modal-content" data-border-top="multi">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $purchaseId . " - " . $username; ?></h4>
+                <h4 class="modal-title" id="default-modal-label">  <?php echo "Order #" . $billNumber . " - " . $username; ?></h4>
             </div>
             <div class="modal-body">
                 <h4>Order Status</h4>
                 <div class="block-content-outer">
                     <div class="block-content-inner">
                         <?php echo form_open('orders/update_order_status'); ?>
-                        <input type="hidden" name="orderid" value="<?php echo $purchaseId; ?>"/>
+                        <input type="hidden" name="orderid" value="<?php echo $billNumber; ?>"/>
                         <br>
 
                         <select id="orderstatusoptions" name="orderstatusoptions" class="form-control" onchange="setOrderStatus()">
@@ -175,7 +175,7 @@ foreach ($paid_data->data as $value) {
                 <div class="block">
                     <div class="block-heading">
                         <div class="main-text h2">
-                            <?php echo "Order #" . $purchaseId . " - " . $username; ?>
+                            <?php echo "Order #" . $billNumber . " - " . $username; ?>
                         </div>
                     </div>
                     <div class="block-content-outer">
@@ -192,7 +192,7 @@ foreach ($paid_data->data as $value) {
                                             <tbody>
                                                 <tr>
                                                     <td class="col-md-3">Order ID:</td>
-                                                    <td class="col-md-9">#<?php echo $purchaseId; ?></td>
+                                                    <td class="col-md-9">#<?php echo $billNumber; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-3">Invoice #:</td>
@@ -253,7 +253,7 @@ foreach ($paid_data->data as $value) {
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-3">Home Delivery:</td>
-                                                    <td class="col-md-9"><?php echo $isHomeDelivery; ?></td>
+                                                    <td class="col-md-9"><?php echo $isDelivered; ?></td>
                                                 </tr>
                                                 <?php if ($deliveryOptionsValue == "HOME") { ?>
                                                     <tr>
@@ -278,7 +278,7 @@ foreach ($paid_data->data as $value) {
                                             <tbody>
                                                 <?php
                                                 foreach ($paid_data->data as $value) {
-                                                    if ($value->purchaseId == $purchaseId) {
+                                                    if ($value->billNumber == $billNumber) {
                                                         foreach ($value->productDetails as $item) {
                                                             echo "<tr>";
                                                             echo "<td>" . $item->itemNo . "</td>";
