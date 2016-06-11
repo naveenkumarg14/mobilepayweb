@@ -16,6 +16,7 @@ $(".delete").on("click", function () {
     $(".case:checkbox:checked").parents("tr").remove();
     $(".check_all").prop("checked", !1);
     check();
+    calculateTotal();
 });
 
 var i = $("table tr").length;
@@ -70,6 +71,7 @@ data: {name_startsWith: request.term},
             $('#product_rate_' + elementId).val(ui.item.data.Rate);
              $('#product_qty_' + elementId).val(1);
              $('#total_price_' + elementId).val(ui.item.data.Rate);
+             calculateTotal();
         }
     });
 });
@@ -87,6 +89,8 @@ $(document).on('change keyup blur', '.changesNo', function () {
         $('#total_price_' + elementId).val((parseFloat(price) * parseFloat(quantity)).toFixed(2));
     calculateTotal();
 });
+
+
 
 $(document).on('change keyup blur', '#tax', function () {
     calculateTotal();

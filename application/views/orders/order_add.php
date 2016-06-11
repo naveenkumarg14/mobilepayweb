@@ -153,7 +153,7 @@
                                             <div class="form-group">
                                                 <label>Tax Amount: &nbsp;</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="tax" name="tax" value="" placeholder="Tax" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+                                                    <input type="text" class="form-control" id="tax" name="tax" value="15" placeholder="Tax" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly>
                                                     <div class="input-group-addon">%</div>
                                                 </div>
                                             </div>
