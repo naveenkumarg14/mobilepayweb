@@ -24,11 +24,11 @@ $(".addmore").on("click", function () {
     count = $("table tr").length;
     var t = "<tr><td><input type='checkbox' class='case'/></td>";
     t += "<td><span id='snum" + i + "'>" + count + ".</span></td>";
-    t += "<td><input type='text' data-type='productname' id='productname_" + i + "' name='productname[]' class='form-control autocomplete_txt'/></td>";
-    t += "<td><input type='text' data-type='product_id' id='product_id_" + i + "' name='product_id[]' class='form-control autocomplete_txt' readonly/></td>";
-    t += "<td><input type='text' data-type='product_rate' id='product_rate_" + i + "' name='product_rate[]' class='form-control' readonly/>";
-    t += "</td><td><input type='number' data-type='product_qty' id='product_qty_" + i + "' name='product_qty[]' class='form-control changesNo' onkeypress='return IsNumeric(event);'/></td>";
-    t += "<td><input type='text' data-type='total_price' id='total_price_" + i + "' name='total_price[]' class='form-control totalLinePrice' onkeypress='return IsNumeric(event);' readonly/>";
+    t += "<td><input type='text' data-type='productname' id='productname_" + i + "' name='productname[]' class='form-control autocomplete_txt'   required='true'/></td>";
+    t += "<td><input type='text' data-type='product_id' id='product_id_" + i + "' name='product_id[]' class='form-control autocomplete_txt' readonly required='true'/></td>";
+    t += "<td><input type='text' data-type='product_rate' id='product_rate_" + i + "' name='product_rate[]' class='form-control' readonly required='true'/>";
+    t += "</td><td><input type='number' data-type='product_qty' id='product_qty_" + i + "' name='product_qty[]' class='form-control changesNo' onkeypress='return IsNumeric(event);' required='true'/></td>";
+    t += "<td><input type='text' data-type='total_price' id='total_price_" + i + "' name='total_price[]' class='form-control totalLinePrice' onkeypress='return IsNumeric(event);' readonly required='true'/>";
     t += "</tr>";
     $("table").append(t);
     i++;
@@ -122,17 +122,17 @@ function calculateTotal() {
                 total = subTotal - discountAmountTemp.toFixed(2);
             }
         } else if (discountType === 'AMOUNT') {
-           
+
             if (discountMinAmount) {
                 if (discountMinAmount <= subTotal && discountAmount <= subTotal) {
-                   total = subTotal - discountAmount;
+                    total = subTotal - discountAmount;
                 }
             } else {
-               
+
                 if (discountAmount <= subTotal) {
-                   
+
                     total = subTotal - discountAmount;
-                   
+
                 }
             }
 
@@ -164,33 +164,44 @@ function IsNumeric(e) {
     return ret;
 }
 /*
-function applyDiscount() {
-    var subTotal = $('#subTotal').val();
-    var discountType = $('#discounttype').val();
-    var minAmount = $('#discountMinAmount').val();
-    var discountAmount = $('#discountAmount').val();
-    var totalAmount = 0;
-    if (discountType === 'AMOUNT' && subTotal >= minAmount) {
-        totalAmount = subTotal - discountAmount;
-    } else if (discountType === 'PERCENTAGE' && subTotal >= minAmount) {
-        totalAmount = subTotal - (subTotal * (discountAmount / 100));
-    } else {
-        totalAmount = subTotal;
-    }
-
-
-    if (tax !== '' && typeof (tax) !== "undefined") {
-        taxAmount = totalAmount * (parseFloat(tax) / 100);
-        $('#taxAmount').val(taxAmount.toFixed(2));
-        totalAmount = totalAmount + taxAmount;
-    }
-
-    $('#totalAftertax').val(totalAmount.toFixed(2));
-}*/
+ function applyDiscount() {
+ var subTotal = $('#subTotal').val();
+ var discountType = $('#discounttype').val();
+ var minAmount = $('#discountMinAmount').val();
+ var discountAmount = $('#discountAmount').val();
+ var totalAmount = 0;
+ if (discountType === 'AMOUNT' && subTotal >= minAmount) {
+ totalAmount = subTotal - discountAmount;
+ } else if (discountType === 'PERCENTAGE' && subTotal >= minAmount) {
+ totalAmount = subTotal - (subTotal * (discountAmount / 100));
+ } else {
+ totalAmount = subTotal;
+ }
+ 
+ 
+ if (tax !== '' && typeof (tax) !== "undefined") {
+ taxAmount = totalAmount * (parseFloat(tax) / 100);
+ $('#taxAmount').val(taxAmount.toFixed(2));
+ totalAmount = totalAmount + taxAmount;
+ }
+ 
+ $('#totalAftertax').val(totalAmount.toFixed(2));
+ }*/
 
 function resetDiscountValue() {
-        $('#discountAmount').val('');
+    var discountType = $('#discounttype').val();
+
+    if (discountType === 'NONE') {
+        $("#discountAmount").prop('required', false);
+        $("#discountMinAmount").prop('required', false);
+    } else {
+        $("#discountAmount").prop('required', true);
+        $("#discountMinAmount").prop('required', true);
+    }
+    $('#discountAmount').val('');
     $('#discountMinAmount').val('');
+
+
     calculateTotal();
 
 }

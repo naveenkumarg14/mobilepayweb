@@ -63,10 +63,10 @@
             </div>
             <div class="col-md-6">
                 <!-- START Main Buttons -->
-                <div class="page-heading-controls">
+<!--                <div class="page-heading-controls">
                     <a href="pages-invoice.html" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span>Print Invoice</a>
                     <a href="#" role="button" class="btn btn-danger">Delete</a>
-                </div>
+                </div>-->
             </div>
             <!-- END Main Buttons -->
         </div>
@@ -120,16 +120,6 @@
                                         </tbody>
                                     </table>
 
-                                    <div class="help-text">Showing 1 - 20 of 98</div>
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#">&laquo;</a></li>
-                                        <li class="active"><a href="#"><span>1 <span class="sr-only">(current)</span></span></a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>
                                 </form>
                             </div>
                         </div>

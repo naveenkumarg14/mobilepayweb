@@ -128,35 +128,34 @@ Class Orders extends CI_Controller {
     }
 
     public function ajax() {
-       
-       $keyword =$this->input->post('name_startsWith');
+
+        $keyword = $this->input->post('name_startsWith');
         $data = $this->Orders_model->GetRows($keyword);
         echo json_encode($data);
     }
 
     public function create() {
 
-        $json_response = $this->Orders_model->create_order();
-        $decode_json = json_decode($json_response);
-        $status_code = $decode_json->statusCode;
+            $json_response = $this->Orders_model->create_order();
+            $decode_json = json_decode($json_response);
+            $status_code = $decode_json->statusCode;
 
-        switch ($status_code) {
-            case "200":
-                $data['sucess'] = $decode_json->data;
-                break;
-            case "405":
-                $data['error'] = "Invalid Login!";
-                break;
-            case "406":
-                $data['error'] = "Invalid Mobile!";
-                break;
-            case "500":
-                $data['error'] = "Internal Server Error!";
-                break;
-            default:
-                $data['error'] = "Invalid Login!";
-        }
-
+            switch ($status_code) {
+                case "200":
+                    $data['sucess'] = $decode_json->data;
+                    break;
+                case "405":
+                    $data['error'] = "Invalid Login!";
+                    break;
+                case "406":
+                    $data['error'] = "Invalid Mobile!";
+                    break;
+                case "500":
+                    $data['error'] = "Internal Server Error!";
+                    break;
+                default:
+                    $data['error'] = "Invalid Login!";
+                   }
 
         $this->load->view('templates/header');
         $this->load->view('orders/order_add');

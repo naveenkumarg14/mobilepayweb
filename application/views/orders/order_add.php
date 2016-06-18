@@ -73,6 +73,7 @@
                     <div class="block-content-outer">
                         <div class="block-content-inner">
                             <div class="table-responsive">
+
                                 <?php echo form_open('orders/create'); ?>
                                 <div class="tab-pane" id="product-edit-tabs-data">
 
@@ -82,7 +83,7 @@
                                                 Customer Name
                                             </label>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control" id="customername" name="customername" placeholder="Customer Name" value=''>
+                                                <input type="text" class="form-control" id="customername" name="customername" placeholder="Customer Name" value=''   required="true">
                                             </div>
                                         </div>
 
@@ -91,7 +92,7 @@
                                                 Mobile Number
                                             </label>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control" id="mobilenumber" name="mobilenumber" placeholder="Mobile Number" value=''>
+                                                <input type="number" maxlength="10" pattern=".{10,10}" required title="5 to 10 characters" class="form-control" id="mobilenumber" name="mobilenumber" placeholder="Mobile Number" value=''  required="true">
                                             </div>
                                         </div>
                                         <br>
@@ -101,7 +102,7 @@
                                                 Home Delivery
                                             </label>
                                             <div class="col-md-8">
-                                                <select id="homedelivery" name="homedelivery" class="form-control">
+                                                <select id="homedelivery" name="homedelivery" class="form-control"   required="true">
                                                     <option value="true">Yes</option>
                                                     <option value="false">No</option>
                                                 </select>													
@@ -113,7 +114,7 @@
                                                 Editable
                                             </label>
                                             <div class="col-md-8">
-                                                <select id="editable" name="editable" class="form-control">
+                                                <select id="editable" name="editable" class="form-control"  required="true">
                                                     <option value="true">Yes</option>
                                                     <option value="false">No</option>
                                                 </select>													
@@ -137,11 +138,11 @@
                                                 <tr>
                                                     <td><input type='checkbox' class='case'/></td>
                                                     <td><span id='snum'>1.</span></td>
-                                                    <td><input type='text' data-type="productname" class="form-control autocomplete_txt" id='productname_1' name='productname[]'/></td>
-                                                    <td><input type='text' data-type="product_id" class="form-control autocomplete_txt" id='product_id_1' name='product_id[]' readonly/></td>
-                                                    <td><input type='text' data-type="product_rate" class="form-control autocomplete_txt" id='product_rate_1' name='product_rate[]' readonly/></td>
-                                                    <td><input type='number' data-type="product_qty" class="form-control changesNo" id='product_qty_1' name='product_qty[]' /> </td>
-                                                    <td><input type='text' data-type="total_price" class="form-control totalLinePrice" id='total_price_1' name='total_price[]' readonly/> </td>
+                                                    <td><input type='text' data-type="productname" class="form-control autocomplete_txt" id='productname_1' name='productname[]'   required="true"/></td>
+                                                    <td><input type='text' data-type="product_id" class="form-control autocomplete_txt" id='product_id_1' name='product_id[]' readonly   required="true"/></td>
+                                                    <td><input type='text' data-type="product_rate" class="form-control autocomplete_txt" id='product_rate_1' name='product_rate[]' readonly   required="true"/></td>
+                                                    <td><input type='number' data-type="product_qty" class="form-control changesNo" id='product_qty_1' name='product_qty[]'   required="true"/> </td>
+                                                    <td><input type='text' data-type="total_price" class="form-control totalLinePrice" id='total_price_1' name='total_price[]' readonly   required="true"/> </td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -149,29 +150,42 @@
 
 
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <button class="btn btn-danger delete" type="button">- Delete</button>
                                             <button class="btn btn-success addmore" type="button">+ Add More</button>
+
+                                            <?php
+                                            if (!empty(validation_errors())) {
+                                                echo '<div class="alert alert-danger">';
+                                                echo validation_errors();
+                                                echo '</div>';
+                                            }
+                                            ?>
+
                                         </div>
-                                        <div class="col-xs-12 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-5 col-md-5 col-lg-5">
+
+
+                                        <div class="col-xs-12 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-sm-5 col-md-5 col-lg-5">
                                             <div class="form-group">
                                                 <label>Subtotal: &nbsp;</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">$</div>
-                                                    <input type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly>
+                                                    <input type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly   required="true">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Tax Amount: &nbsp;</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="tax" name="tax" value="15" placeholder="Tax" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly>
+                                                    <input type="text" class="form-control" id="tax" name="tax" value="15" placeholder="Tax" onkeyup="calculateTotal()" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly   required="true">
                                                     <div class="input-group-addon">%</div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Discount Type: &nbsp;</label>
-                                                <select name="discounttype" id="discounttype" class="form-control" onchange="resetDiscountValue()">
+                                                <select name="discounttype" id="discounttype" class="form-control" onchange="resetDiscountValue()" required="true">
                                                     <option value="NONE">None</option>
                                                     <option value="PERCENTAGE">Percentage</option>
                                                     <option value="AMOUNT">Amount</option>
@@ -195,11 +209,16 @@
                                                 <label>Total: &nbsp;</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">$</div>
-                                                    <input type="number" class="form-control" name="total" id="totalAftertax" placeholder="Total" onkeypress="return IsNumeric(event);" onkeyup="applyDiscount()" ondrop="return false;" onpaste="return false;" readonly>
+                                                    <input type="number" class="form-control" name="total" id="totalAftertax" placeholder="Total" onkeypress="return IsNumeric(event);" onkeyup="applyDiscount()" ondrop="return false;" onpaste="return false;" readonly   required="true">
                                                 </div>
                                             </div>
                                         </div>
+
+
+
                                     </div>
+
+
 
                                     <div class="page-heading-controls">
                                         <input type="submit" class="btn btn-primary"/>

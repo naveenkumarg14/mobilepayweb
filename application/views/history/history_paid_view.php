@@ -66,10 +66,10 @@
             <div class="col-md-6">
 
                 <!-- START Main Buttons -->
-                <div class="page-heading-controls">
-                    <a href="pages-invoice.html" role="button" class="btn btn-primary">Print Invoice</a>
+<!--                <div class="page-heading-controls">
+                    <a href="" role="button" class="btn btn-primary">Print Invoice</a>
                     <a href="" role="button" class="btn btn-warning">Update Order Status</a>
-                </div>
+                </div>-->
                 <!-- END Main Buttons -->
 
             </div>
@@ -78,7 +78,7 @@
             <div class="col-md-12">
                 <?php
                 foreach ($paid_data->data as $value) {
-                    if ($value->purchaseId == $purchaseId) {
+                    if ($value->billNumber == $billNumber) {
 
                         $billNumber = $value->billNumber;
                         $category = $value->category;
@@ -109,8 +109,10 @@
                         $username = $value->users->name;
                         $mobilenumber = $value->users->mobileNumber;
 
-                        $deliveryOptionsValue = $value->deliveryOptions;
-                        switch ($deliveryOptionsValue) {
+                        if ($value->orderStatus != 'CANCELLED') {
+                            $deliveryOptionsValue = $value->deliveryOptions;
+                       
+                            switch ($deliveryOptionsValue) {
                             case "NONE":
                                 $deliveryOptions = "Billing";
                                 break;
@@ -129,6 +131,10 @@
                                 $deliveryOptions = "Collection";
                                 break;
                         }
+                        }else {
+                             $deliveryOptions = "Not Applicable";
+                        }
+                        
                     }
                 }
                 //NONE(0), HOME(1), LUGGAGE(2);
@@ -137,7 +143,7 @@
                 <div class="block">
                     <div class="block-heading">
                         <div class="main-text h2">
-                            <?php echo "Order #" . $purchaseId . " - " . $username; ?>
+                            <?php echo "Order #" . $billNumber . " - " . $username; ?>
                         </div>
                     </div>
                     <div class="block-content-outer">
@@ -154,7 +160,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="col-md-3">Order ID:</td>
-                                                    <td class="col-md-9">#<?php echo $purchaseId; ?></td>
+                                                    <td class="col-md-9">#<?php echo $billNumber; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-3">Invoice #:</td>
@@ -216,7 +222,7 @@
                                                     <td class="col-md-3">Home Delivery:</td>
                                                     <td class="col-md-9"><?php echo $isHomeDelivery; ?></td>
                                                 </tr>
-                                                <?php if ($deliveryOptionsValue == "HOME") { ?>
+                                                <?php if ($value->orderStatus != 'CANCELLED' && $deliveryOptionsValue == "HOME") { ?>
                                                     <tr>
                                                         <td class="col-md-3">Address:</td>
                                                         <td class="col-md-9"><?php echo $addressName . ',<br> ' . $street . ', ' . $address . ', ' . $area . ', ' . $city . ', ' . $postalCode ?></td>
@@ -239,7 +245,7 @@
                                             <tbody>
                                                 <?php
                                                 foreach ($paid_data->data as $value) {
-                                                    if ($value->purchaseId == $purchaseId) {
+                                                    if ($value->billNumber == $billNumber) {
                                                         foreach ($value->productDetails as $item) {
                                                             echo "<tr>";
                                                             echo "<td>" . $item->itemNo . "</td>";

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Product Sales</title>
+        <title>MobilePay</title>
 
         <!-- Required CSS Files -->
         <link type="text/css" href="<?php echo base_url(); ?>css/required/bootstrap/bootstrap.min.css" rel="stylesheet">

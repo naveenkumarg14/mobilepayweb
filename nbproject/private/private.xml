@@ -5,11 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/mobilepay/application/config/constants.php</file>
             <file>file:/C:/xampp/htdocs/mobilepay/application/config/config.php</file>
-            <file>file:/C:/xampp/htdocs/mobilepay/js/main.js</file>
-            <file>file:/C:/xampp/htdocs/mobilepay/application/views/orders/order_add.php</file>
             <file>file:/C:/xampp/htdocs/mobilepay/application/config/database.php</file>
-            <file>file:/C:/xampp/htdocs/mobilepay/js/ajax.js</file>
-            <file>file:/C:/xampp/htdocs/mobilepay/application/models/Orders_model.php</file>
         </group>
     </open-files>
 </project-private>
