@@ -75,7 +75,7 @@ foreach ($paid_data->data as $value) {
 
                         <br>
                         <div id="orderstatusvaluediv" style="display:none;">
-                            <input type="text"  class="form-control" name="orderstatusvalue" id="orderstatusvalue" placeholder="Enter the counter number">
+                            <input type="text"  class="form-control" name="orderstatusvalue" id="orderstatusvalue" placeholder="Enter the counter number" required="true">
                         </div>
                         <br>
                         <label for="input-demo-h-1">Description</label>
