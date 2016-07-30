@@ -4378,3 +4378,8 @@ a.list-group-item {
 /* Custom Error Message */
 .error-message{color:#c9302c;margin-bottom: 10px;text-align:center;}
 .error-message p{text-align:center;}
+
+#deliveryCondition123{display:none;}
+#amount123{display:none;}
+#maxDistance{display:none;}
+#minAmount{display:none;}

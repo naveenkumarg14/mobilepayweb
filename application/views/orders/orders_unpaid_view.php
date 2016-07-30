@@ -5,11 +5,8 @@ foreach ($unpaid_data->data as $value) {
         $billNumber = $value->billNumber;
         $category = $value->category;
         $isEditable = $value->isEditable;
-        $isDelivered = $value->isDelivered;
-        if ($isDelivered == true)
-            $deliveryOptions = "Yes";
-        else
-            $deliveryOptions = "No";
+        $merchantDeliveryOptions = $value->merchantDeliveryOptions;
+       
 
         $lastModifiedDateTime = $value->lastModifiedDateTime;
         $seconds = $lastModifiedDateTime / 1000;
@@ -212,8 +209,8 @@ foreach ($unpaid_data->data as $value) {
                                                     <td class="col-md-9"><?php echo $mobilenumber; ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="col-md-3">Home Delivery:</td>
-                                                    <td class="col-md-9"><?php echo $deliveryOptions; ?></td>
+                                                    <td class="col-md-3">Merchant Delivery Option:</td>
+                                                    <td class="col-md-9"><?php echo $merchantDeliveryOptions; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>

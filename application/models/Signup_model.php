@@ -20,7 +20,19 @@ class Signup_model extends CI_Model {
             'landLineNumber' => $this->input->post('landLineNumber'),
             'password' => $this->input->post('password'),
             'category' => $this->input->post('category'),
-            'file' => $this->input->post('file')
+            'file' => $this->input->post('file'),
+            'deliveryOptions' => $this->input->post('deliveryOption'),
+            //homeDeliveryOptions
+            //deliveryOptions
+            //deliveryConditions
+            //minAmount
+            //maxDistance
+            //amount
+            'homeDeliveryOptions' => array('deliveryOptions' => $this->input->post('deliveryOption'),
+                'deliveryConditions' => $this->input->post('deliveryCondition'),
+                'minAmount' => $this->input->post('inputMinAmount'),
+                'maxDistance' => $this->input->post('inputMaxDistance'),
+                'amount' => $this->input->post('inputAmount'))
         );
         //Encode the array into JSON.
         $jsonDataEncoded = json_encode($jsonData);

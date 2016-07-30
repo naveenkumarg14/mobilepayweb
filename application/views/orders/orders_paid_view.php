@@ -25,27 +25,21 @@ foreach ($paid_data->data as $value) {
 
         $username = $value->users->name;
         $mobilenumber = $value->users->mobileNumber;
+        
+        $merchantDeliveryOptions = $value->merchantDeliveryOptions;
 
-        $deliveryOptionsValue = $value->deliveryOptions;
-        switch ($deliveryOptionsValue) {
-            case "NONE":
-                $deliveryOptions = "Billing";
-                break;
-            Case "HOME":
-                $deliveryOptions = "Home Delivery";
-
-                $addressName = $value->addressDetails->name;
+        $userDeliveryOptions = $value->userDeliveryOptions;
+        
+        if($userDeliveryOptions == 'HOME'){
+             $addressName = $value->addressDetails->name;
                 $street = $value->addressDetails->street;
                 $address = $value->addressDetails->address;
                 $area = $value->addressDetails->area;
                 $city = $value->addressDetails->city;
                 $postalCode = $value->addressDetails->postalCode;
                 $mobile = $value->addressDetails->mobile;
-                break;
-            Case "LUGGAGE":
-                $deliveryOptions = "Collection";
-                break;
         }
+        
     }
 }
 ?>
@@ -230,8 +224,8 @@ foreach ($paid_data->data as $value) {
                                                     ?>
                                                 </tr>
                                                 <tr>
-                                                    <td class="col-md-3">Delivery Option:</td>
-                                                    <td class="col-md-9"><?php echo $deliveryOptions; ?></td>
+                                                    <td class="col-md-3">Merchant Delivery Option:</td>
+                                                    <td class="col-md-9"><?php echo $merchantDeliveryOptions; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -248,14 +242,10 @@ foreach ($paid_data->data as $value) {
                                                     <td class="col-md-9"><?php echo $mobilenumber; ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="col-md-3">Delivery Option:</td>
-                                                    <td class="col-md-9"><?php echo $deliveryOptions; ?></td>
+                                                    <td class="col-md-3">User Delivery Option:</td>
+                                                    <td class="col-md-9"><?php echo $userDeliveryOptions; ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="col-md-3">Home Delivery:</td>
-                                                    <td class="col-md-9"><?php echo $isDelivered; ?></td>
-                                                </tr>
-                                                <?php if ($deliveryOptionsValue == "HOME") { ?>
+                                                <?php if ($userDeliveryOptions == "HOME") { ?>
                                                     <tr>
                                                         <td class="col-md-3">Address:</td>
                                                         <td class="col-md-9"><?php echo $addressName . ',<br> ' . $street . ', ' . $address . ', ' . $area . ', ' . $city . ', ' . $postalCode ?></td>

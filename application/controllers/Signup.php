@@ -24,6 +24,7 @@ Class Signup extends CI_Controller {
         $this->form_validation->set_rules('landLineNumber', 'Shop LandLine Number', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('category', 'Shop Type', 'required');
+        $this->form_validation->set_rules('deliveryOption', 'Delivery Option', 'required');
         //$this->form_validation->set_rules('file', 'Shop Logo', 'required');
 
         if ($this->form_validation->run() === FALSE) {

@@ -99,12 +99,14 @@
                                         <br>
                                         <div class="form-group">
                                             <label for="product-sku" class="col-md-4 control-label">
-                                                Home Delivery
+                                                Delivery
                                             </label>
                                             <div class="col-md-8">
                                                 <select id="homedelivery" name="homedelivery" class="form-control"   required="true">
-                                                    <option value="true">Yes</option>
-                                                    <option value="false">No</option>
+                                                    <option value="NONE">NONE</option>
+                                                    <option value="HOME">HOME</option>
+                                                    <option value="COUNTER_COLLECTION">COUNTER_COLLECTION</option>
+                                                    <option value="BOTH">BOTH</option>
                                                 </select>													
                                             </div>
                                         </div>

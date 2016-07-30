@@ -105,20 +105,19 @@
                         $discount = $value->amountDetails->discount;
                         $discountType = $value->amountDetails->discountType;
                         $discountMiniVal = $value->amountDetails->discountMiniVal;
+                        
+                         
+                          $merchantDeliveryOptions = $value->merchantDeliveryOptions;
+
+        
 
                         $username = $value->users->name;
                         $mobilenumber = $value->users->mobileNumber;
 
                         if ($value->orderStatus != 'CANCELLED') {
-                            $deliveryOptionsValue = $value->deliveryOptions;
-                       
-                            switch ($deliveryOptionsValue) {
-                            case "NONE":
-                                $deliveryOptions = "Billing";
-                                break;
-                            Case "HOME":
-                                $deliveryOptions = "Home Delivery";
-
+                            $userDeliveryOptions = $value->userDeliveryOptions;
+                            
+                            if($userDeliveryOptions == "HOME"){
                                 $addressName = $value->addressDetails->name;
                                 $street = $value->addressDetails->street;
                                 $address = $value->addressDetails->address;
@@ -126,11 +125,9 @@
                                 $city = $value->addressDetails->city;
                                 $postalCode = $value->addressDetails->postalCode;
                                 $mobile = $value->addressDetails->mobile;
-                                break;
-                            Case "LUGGAGE":
-                                $deliveryOptions = "Collection";
-                                break;
-                        }
+                            }
+                       
+                            
                         }else {
                              $deliveryOptions = "Not Applicable";
                         }
@@ -201,8 +198,8 @@
                                                     ?>
                                                 </tr>
                                                 <tr>
-                                                    <td class="col-md-3">Delivery Option:</td>
-                                                    <td class="col-md-9"><?php echo $deliveryOptions; ?></td>
+                                                    <td class="col-md-3">Merchant Delivery Option:</td>
+                                                    <td class="col-md-9"><?php echo $merchantDeliveryOptions; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -219,10 +216,10 @@
                                                     <td class="col-md-9"><?php echo $mobilenumber; ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="col-md-3">Home Delivery:</td>
-                                                    <td class="col-md-9"><?php echo $isHomeDelivery; ?></td>
+                                                    <td class="col-md-3">User Delivery Option:</td>
+                                                    <td class="col-md-9"><?php echo $userDeliveryOptions; ?></td>
                                                 </tr>
-                                                <?php if ($value->orderStatus != 'CANCELLED' && $deliveryOptionsValue == "HOME") { ?>
+                                                <?php if ($value->orderStatus != 'CANCELLED' && $userDeliveryOptions == "HOME") { ?>
                                                     <tr>
                                                         <td class="col-md-3">Address:</td>
                                                         <td class="col-md-9"><?php echo $addressName . ',<br> ' . $street . ', ' . $address . ', ' . $area . ', ' . $city . ', ' . $postalCode ?></td>

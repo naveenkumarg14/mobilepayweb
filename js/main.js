@@ -215,4 +215,3 @@ function setOrderStatus() {
         $('#orderstatusvalue').val(orderstatusoptions);
     }
 }
-

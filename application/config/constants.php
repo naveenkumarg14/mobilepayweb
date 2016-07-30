@@ -84,5 +84,6 @@ defined('EXIT_USER_INPUT') OR define('EXIT_USER_INPUT', 7); // invalid user inpu
 defined('EXIT_DATABASE') OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-//123.238.109.39
+//123.238.109.39  //123.238.109.39
+//define('WEBSERVICEURL', 'http://52.41.226.201:8080/mobilepay/merchant/');
 define('WEBSERVICEURL', 'http://123.238.109.39:8082/mobilepay/merchant/');
